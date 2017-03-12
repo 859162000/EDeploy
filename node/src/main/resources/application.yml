@@ -1,15 +1,27 @@
 # Server settings (ServerProperties)
 server:
-  port: 8080
+  port: 8000
   address: 127.0.0.1
-  sessionTimeout: 30
+  session:
+    timeout: 30
   contextPath: /
 
   # Tomcat specifics
   tomcat:
-    accessLogEnabled: false
+    accesslog:
+      enabled: false
     protocolHeader: x-forwarded-proto
     remoteIpHeader: x-forwarded-for
-    basedir:
     backgroundProcessorDelay: 30 # secs
 
+
+spring:
+  thymeleaf:
+    enabled: true
+  datasource:
+    url: jdbc:mysql://139.196.206.242:3306/express?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    username: root
+    password: lgl123
+  mvc:
+    media-types:
+      json: application/json;charset=UTF-8
