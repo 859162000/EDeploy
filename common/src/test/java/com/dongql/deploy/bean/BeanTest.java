@@ -27,8 +27,8 @@ public class BeanTest {
         server.setHost("10.0.11.1");
         server.setPort(8088);
         server.setWeight(5);
-        server.setMaxFails(3);
-        server.setFailTimeout(30);
+        server.setMaxFails(5);
+        server.setFailTimeout(60);
         servers.add(server);
 
         NginxUpStream upStream = new NginxUpStream();
