@@ -58,7 +58,7 @@ public class AppNode {
         }
         if (!configFile.canWrite()) {
             System.out.println("cannot modify file : " + nginxConf + ", check your permission...");
-            System.exit(2);
+            System.exit(3);
         }
         System.out.println(nginxConf + " is OK!");
         SpringApplication.run(AppNode.class, args);
