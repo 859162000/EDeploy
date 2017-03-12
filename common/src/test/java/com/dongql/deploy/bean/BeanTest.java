@@ -12,6 +12,11 @@ public class BeanTest {
 
     @Test
     public void upstream(){
+        NginxUpStream upStream = getNginxUpStream();
+        System.out.println(upStream.toString());
+    }
+
+    private NginxUpStream getNginxUpStream() {
         List<NginxUpStreamServer> servers = new ArrayList<>();
         NginxUpStreamServer server = new NginxUpStreamServer();
         server.setHost("127.0.0.1");
@@ -30,8 +35,7 @@ public class BeanTest {
         upStream.setName("upstream_erp");
         upStream.setIpHash(true);
         upStream.setServers(servers);
-
-        System.out.println(upStream.toString());
+        return upStream;
     }
 
 }
