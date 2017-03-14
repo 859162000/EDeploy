@@ -47,7 +47,7 @@ public class AppNode {
 
     public static void main(String[] args) throws Exception {
         if (args == null || args.length < 1) {
-            System.out.println("Usage: java -jar node-xxx.jar path-to-nginx.conf");
+            System.out.println("Usage: java -jar node-xxx.jar path-to-nginx.conf notify-url-base");
             System.exit(1);
         }
         nginxConf = args[0];

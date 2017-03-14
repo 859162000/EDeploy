@@ -14,13 +14,20 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 /**
- * 处理nginx.conf文件，用新的upstream参数替换原来的
+ * nginx相关
  * Created by dongqilin on 2017/3/12.
  */
 public class NginxUtil {
 
-    private NginxUtil(){}
+    private NginxUtil() {
+    }
 
+    /**
+     * 解析优雅重启nginx的命令行参数
+     *
+     * @param config nginx.conf文件路径
+     * @return 重启命令
+     */
     public static String nginx(String config) {
         String parent = new File(config).getParentFile().getParent();
         String exec;
@@ -32,6 +39,13 @@ public class NginxUtil {
         return exec + " -s reload -c " + config;
     }
 
+    /**
+     * 处理nginx.conf文件，用新的upstream参数替换原来的
+     *
+     * @param path   nginx.conf文件路径
+     * @param config 新的upstream列表
+     * @return 是否处理成功
+     */
     public static boolean refineNginxConf(String path, List<NginxUpStream> config) {
         File file = new File(path);
         StringJoiner joiner = new StringJoiner("\n");
@@ -50,6 +64,7 @@ public class NginxUtil {
         try {
             lines = Files.lines(path, charset).collect(Collectors.toList());
         } catch (IOException e) {
+            e.printStackTrace();
             return false;
         }
 
@@ -84,8 +99,8 @@ public class NginxUtil {
             return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
 }
